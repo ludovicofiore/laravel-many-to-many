@@ -1,0 +1,33 @@
+header,
+aside {
+    a {
+        text-decoration: none;
+        color: white;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+ul {
+    list-style-type: none;
+}
+
+header {
+    max-height: 55px;
+}
+
+.wrapper {
+    height: calc(100vh - 57px);
+}
+
+aside {
+    width: 150px;
+    height: 100%;
+}
+
+.content {
+    overflow: auto;
+    width: 100%;
+}
