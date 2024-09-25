@@ -75,7 +75,9 @@ class ProjectController extends Controller
         $projects = Project::find($id);
 
         $types = Type::all();
-        return view('admin.projects.edit', compact('projects', 'types'));
+
+        $technologies = Technology::all();
+        return view('admin.projects.edit', compact('projects', 'types', 'technologies'));
     }
 
     /**
@@ -95,6 +97,12 @@ class ProjectController extends Controller
         };
 
         $projects->update($data);
+
+        if(array_key_exists('technologies', $data)){
+            $projects->technology()->sync($data['technologies']);
+        }else {
+            $projects->technology()->detach();
+        }
 
         return redirect()-> route('admin.projects.show', $projects);
     }
