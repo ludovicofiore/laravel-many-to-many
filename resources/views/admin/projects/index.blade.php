@@ -9,6 +9,7 @@
                 <th scope="col">id</th>
                 <th scope="col">Titolo</th>
                 <th scope="col">Tipologia</th>
+                <th scope="col">Technologie</th>
                 <th scope="col">Data di pubblicazione</th>
                 <th>Azioni</th>
             </tr>
@@ -19,6 +20,14 @@
                     <th>{{ $project->id }}</th>
                     <td>{{ $project->title }}</td>
                     <td>{{ $project->type?->name }}</td>
+                    <td>
+                        @forelse ($project->technology as $technology)
+                            <span>{{ $technology->name }}</span>
+                        @empty
+                            <span>-</span>
+                        @endforelse
+
+                    </td>
                     <td>{{ $project->publication_date }}</td>
                     <td>
                         <div class="d-flex">
