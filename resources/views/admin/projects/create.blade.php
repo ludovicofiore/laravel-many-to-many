@@ -39,6 +39,21 @@
             </div>
 
             <div class="mb-3">
+                <p>Tecnologie</p>
+                <div class="btn-group" role="group">
+
+                    @foreach ($technologies as $technology)
+                        <input value="{{ $technology->id }}" name="technologies[]" type="checkbox" class="btn-check"
+                            id="technology-{{ $technology->id }}" autocomplete="off"
+                            @if (in_array($technology->id, old('technologies', []))) checked @endif>
+                        <label class="btn btn-outline-primary"
+                            for="technology-{{ $technology->id }}">{{ $technology->name }}</label>
+                    @endforeach
+
+                </div>
+            </div>
+
+            <div class="mb-3">
                 <label for="cover_img" class="form-label">Url immagine</label>
                 <input type="text" class="form-control @error('cover_img') is-invalid @enderror" name="cover_img"
                     id="cover_img" value="{{ old('cover_img') }}">

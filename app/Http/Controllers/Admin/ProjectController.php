@@ -8,6 +8,7 @@ use App\Models\Project;
 use App\Http\Requests\ProjectRequest;
 use App\Functions\Helper;
 use App\Models\Type;
+use App\Models\Technology;
 
 class ProjectController extends Controller
 {
@@ -27,7 +28,9 @@ class ProjectController extends Controller
     public function create()
     {
         $types = Type::all();
-        return view('admin.projects.create', compact('types'));
+
+        $technologies = Technology::all();
+        return view('admin.projects.create', compact('types', 'technologies'));
     }
 
     /**
@@ -42,6 +45,10 @@ class ProjectController extends Controller
 
         $new_project->fill($data);
         $new_project->save();
+
+        if(array_key_exists('technologies', $data)){
+            $new_project->technology()->attach($data['technologies']);
+        }
 
         return redirect()->route('admin.projects.show', $new_project->id);
     }
