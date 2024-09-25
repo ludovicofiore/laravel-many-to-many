@@ -15,6 +15,19 @@
         </div>
 
         <div>
+            <h4>Tecnologie</h4>
+            <ul>
+                @forelse ($projects->technology as $technology)
+                    <li>{{ $technology->name }}</li>
+                @empty
+                    <span class="text-danger">Non sono presenti tecnologie</span>
+                @endforelse
+
+            </ul>
+        </div>
+
+        <div>
+            <h4>Immagine</h4>
             @if ($projects->cover_img === null)
                 <p class="text-danger">Immagine non disponibile</p>
             @else
