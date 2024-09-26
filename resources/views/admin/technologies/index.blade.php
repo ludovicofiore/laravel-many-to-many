@@ -4,9 +4,21 @@
     <div class="container my-5">
         <h1>Gestione tecnologie</h1>
 
+        {{-- messaggio successo eliminazione --}}
         @if (session('deleted'))
             <div class="alert alert-success container my-5" role="alert">
                 {{ session('deleted') }}
+            </div>
+        @endif
+
+        {{-- stampa errori --}}
+        @if ($errors->any())
+            <div class="alert alert-danger" role="alert">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
             </div>
         @endif
 

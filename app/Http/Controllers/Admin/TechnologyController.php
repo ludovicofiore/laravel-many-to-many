@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Functions\Helper;
 use App\Models\Technology;
+use App\Http\Requests\TechnologyRequest;
 
 class TechnologyController extends Controller
 {
@@ -30,7 +31,7 @@ class TechnologyController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TechnologyRequest $request)
     {
         $data = $request->all();
         $data['slug'] = Helper::generateSlug($data['name'], Technology::class);
@@ -59,7 +60,7 @@ class TechnologyController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Technology $technology)
+    public function update(TechnologyRequest $request, Technology $technology)
     {
         $data = $request->all();
 
