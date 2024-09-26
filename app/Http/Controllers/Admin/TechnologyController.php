@@ -78,6 +78,6 @@ class TechnologyController extends Controller
     {
         $technology->delete();
 
-        return redirect()->route('admin.technologies.index');
+        return redirect()->route('admin.technologies.index')->with('deleted', 'La tecnologia ' . $technology->name . ' è stata eliminata');
     }
 }

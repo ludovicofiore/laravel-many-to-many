@@ -4,6 +4,12 @@
     <div class="container my-5">
         <h1>Gestione tecnologie</h1>
 
+        @if (session('deleted'))
+            <div class="alert alert-success container my-5" role="alert">
+                {{ session('deleted') }}
+            </div>
+        @endif
+
         <div class="row">
             <div class="col-5">
 

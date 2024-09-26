@@ -3,6 +3,12 @@
 @section('content')
     <h3>Elenco progetti</h3>
 
+    @if (session('deleted'))
+        <div class="alert alert-success container my-5" role="alert">
+            {{ session('deleted') }}
+        </div>
+    @endif
+
     <table class="table">
         <thead>
             <tr>
@@ -19,10 +25,10 @@
                 <tr>
                     <th>{{ $project->id }}</th>
                     <td>{{ $project->title }}</td>
-                    <td>{{ $project->type?->name }}</td>
+                    <td><span class="badge text-bg-success">{{ $project->type?->name }}</span></td>
                     <td>
                         @forelse ($project->technology as $technology)
-                            <span>{{ $technology->name }}</span>
+                            <span class="badge text-bg-info">{{ $technology->name }}</span>
                         @empty
                             <span>-</span>
                         @endforelse
@@ -32,7 +38,8 @@
                     <td>
                         <div class="d-flex">
 
-                            <a class="btn btn-primary mx-1" href="{{ route('admin.projects.show', $project->id) }}">Mostra</a>
+                            <a class="btn btn-primary mx-1"
+                                href="{{ route('admin.projects.show', $project->id) }}">Mostra</a>
                             <a class="btn btn-warning mx-1"
                                 href="{{ route('admin.projects.edit', $project->id) }}">Modifica</a>
                             <form action="{{ route('admin.projects.destroy', $project) }}" method="post"

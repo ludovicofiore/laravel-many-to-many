@@ -77,6 +77,6 @@ class TypeController extends Controller
     {
         $type->delete();
 
-        return redirect()->route('admin.types.index');
+        return redirect()->route('admin.types.index')->with('deleted', 'La tipologia ' . $type->name . ' è stata eliminata');
     }
 }
