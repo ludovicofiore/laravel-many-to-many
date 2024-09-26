@@ -34,7 +34,7 @@
                         @endforelse
 
                     </td>
-                    <td>{{ $project->publication_date }}</td>
+                    <td>{{ $project->publication_date->format('d/m/Y') }}</td>
                     <td>
                         <div class="d-flex">
 

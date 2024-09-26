@@ -10,7 +10,7 @@
             @if ($projects->type?->name === null)
                 <p class="text-danger">Tipologia non disponibile</p>
             @else
-                <p>{{ $projects->type->name }}</p>
+                <p class="badge text-bg-success">{{ $projects->type->name }}</p>
             @endif
         </div>
 
@@ -18,7 +18,7 @@
             <h4>Tecnologie</h4>
             <ul>
                 @forelse ($projects->technology as $technology)
-                    <li>{{ $technology->name }}</li>
+                    <li><span class="badge text-bg-info">{{ $technology->name }}</span></li>
                 @empty
                     <span class="text-danger">Non sono presenti tecnologie</span>
                 @endforelse
@@ -43,7 +43,7 @@
 
             <h4>Data di pubblicazione</h4>
             <p>
-                {{ $projects->publication_date }}
+                {{ $projects->publication_date->format('d/m/Y') }}
             </p>
 
 

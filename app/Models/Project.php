@@ -25,4 +25,8 @@ class Project extends Model
         'slug',
         'cover_img'
     ];
+
+    protected $casts = [
+        'publication_date' => 'datetime:d/m/Y'
+    ];
 }
