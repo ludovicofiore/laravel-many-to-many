@@ -25,6 +25,7 @@ class ProjectRequest extends FormRequest
             'title'=>'required|min:3|max:100',
             'description'=>'required',
             'publication_date'=>'required|date',
+            'cover_img'=>'image|mimes:png,jpg,jpeg|max:5120'
         ];
     }
 
@@ -36,6 +37,9 @@ class ProjectRequest extends FormRequest
             'description.required'=>"La descrizione è un campo obbligatorio",
             'publication_date.required'=>"La data di uscita è un campo obbligatorio",
             'publication_date.date'=>"Il campo deve essere compilato nel formato sopra descritto",
+            'cover_img.image'=>"Il file deve essere di tipo immagine",
+            'cover_img.mimes'=>"Il file deve essere di tipo png, jpg, jpeg",
+            'cover_img.max'=>"Il file non deve essere più grande di 5mb"
         ];
     }
 }

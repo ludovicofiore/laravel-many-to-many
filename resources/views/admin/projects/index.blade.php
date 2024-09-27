@@ -28,7 +28,8 @@
 
                     <td>
                         <div class="container-img">
-                            <img class="img-fluid" src="{{ asset('storage/' . $project->cover_img) }}" alt="">
+                            <img class="img-fluid" src="{{ asset('storage/' . $project->cover_img) }}"
+                                onerror="this.src='/img/no-image.jpg'" alt="">
 
                         </div>
                     </td>
