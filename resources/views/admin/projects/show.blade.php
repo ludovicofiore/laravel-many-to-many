@@ -26,13 +26,18 @@
             </ul>
         </div>
 
-        <div>
+        {{-- <div>
             <h4>Immagine</h4>
             @if ($projects->cover_img === null)
                 <p class="text-danger">Immagine non disponibile</p>
             @else
                 <img src="{{ $projects->cover_img }}" alt="{{ $projects->title }}">
             @endif
+        </div> --}}
+
+        <div>
+            <h4>Immagine</h4>
+            <img src="{{ asset('storage/' . $projects->cover_img) }}" alt="{{ $projects->original_img_name }}">
         </div>
 
         <div>

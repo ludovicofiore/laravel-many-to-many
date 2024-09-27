@@ -9,6 +9,7 @@ use App\Http\Requests\ProjectRequest;
 use App\Functions\Helper;
 use App\Models\Type;
 use App\Models\Technology;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -42,6 +43,14 @@ class ProjectController extends Controller
 
         $new_project = new Project;
         $data['slug'] = Helper::generateSlug($data['title'], Project::class);
+
+        // gestione img
+        if(array_key_exists('cover_img', $data)){
+            $image = Storage::put('uploads', $data['cover_img']);
+            $original_name= $request->file('cover_img')->getClientOriginalName();
+            $data['cover_img'] = $image;
+            $data['original_img_name'] = $original_name;
+        }
 
         $new_project->fill($data);
         $new_project->save();

@@ -23,7 +23,8 @@ class Project extends Model
         'description',
         'publication_date',
         'slug',
-        'cover_img'
+        'cover_img',
+        'original_img_name'
     ];
 
     protected $casts = [

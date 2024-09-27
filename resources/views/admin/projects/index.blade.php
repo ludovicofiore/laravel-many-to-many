@@ -13,6 +13,7 @@
         <thead>
             <tr>
                 <th scope="col">id</th>
+                <th scope="col">Immagine</th>
                 <th scope="col">Titolo</th>
                 <th scope="col">Tipologia</th>
                 <th scope="col">Technologie</th>
@@ -24,7 +25,16 @@
             @foreach ($projects as $project)
                 <tr>
                     <th>{{ $project->id }}</th>
+
+                    <td>
+                        <div class="container-img">
+                            <img class="img-fluid" src="{{ asset('storage/' . $project->cover_img) }}" alt="">
+
+                        </div>
+                    </td>
+
                     <td>{{ $project->title }}</td>
+
                     <td><span class="badge text-bg-success">{{ $project->type?->name }}</span></td>
                     <td>
                         @forelse ($project->technology as $technology)
