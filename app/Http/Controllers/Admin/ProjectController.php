@@ -105,6 +105,17 @@ class ProjectController extends Controller
             $data['slug'] = Helper::generateSlug($data['title'], Project::class);
         };
 
+        // gestione img
+        if(array_key_exists('cover_img', $data)){
+            $image = Storage::put('uploads', $data['cover_img']);
+            $original_name= $request->file('cover_img')->getClientOriginalName();
+            $data['cover_img'] = $image;
+            $data['original_img_name'] = $original_name;
+            if($projects->cover_img) {
+                Storage::delete($projects->cover_img);
+            };
+        }
+
         $projects->update($data);
 
         if(array_key_exists('technologies', $data)){
@@ -122,6 +133,10 @@ class ProjectController extends Controller
     public function destroy(string $id)
     {
         $projects = Project::find($id);
+
+        if($projects->cover_img) {
+            Storage::delete($projects->cover_img);
+        };
 
         $projects->delete();
 

@@ -14,7 +14,7 @@
             </div>
         @endif
 
-        <form action="{{ route('admin.projects.update', $projects) }}" method="post">
+        <form action="{{ route('admin.projects.update', $projects) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -57,9 +57,9 @@
             </div>
 
             <div class="mb-3">
-                <label for="cover_img" class="form-label">Url immagine</label>
-                <input type="text" class="form-control @error('cover_img') is-invalid @enderror" name="cover_img"
-                    id="cover_img" value="{{ old('cover_img', $projects->cover_img) }}">
+                <label for="cover_img" class="form-label">Immagine</label>
+                <input type="file" class="form-control @error('cover_img') is-invalid @enderror" name="cover_img"
+                    id="cover_img">
                 @error('cover_img')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
@@ -67,7 +67,7 @@
 
 
             <div class="mb-3">
-                <label for="publication_date" class="form-label">Data di uscita</label>
+                <label for="publication_date" class="form-label">Data di pubblicazione</label>
                 <input type="date" class="form-control @error('publication_date') is-invalid @enderror"
                     name="publication_date" id="publication_date"
                     value="{{ old('publication_date', $projects->publication_date) }}">
