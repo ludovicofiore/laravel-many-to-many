@@ -9,6 +9,15 @@
         </div>
     @endif
 
+    <div>
+        <form class="d-flex w-50 p-2" action="{{ route('admin.projects.index') }}" method="GEt">
+            <input type="text" class="form-control" type="text" name="search" id="search"
+                placeholder="effettua una ricerca" value="{{ request('search') }}">
+            <button class="btn btn-primary" type="submit">Cerca</button>
+        </form>
+
+    </div>
+
     <table class="table">
         <thead>
             <tr>

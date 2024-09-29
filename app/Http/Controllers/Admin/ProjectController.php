@@ -18,6 +18,15 @@ class ProjectController extends Controller
      */
     public function index()
     {
+        // gestione searchbar
+        if(isset($_GET['search'])){
+            $search = $_GET['search'];
+            $projects = Project::where('title', 'LIKE', '%' . $search . '%')->orderBy('id', 'desc')->paginate(10);
+            $projects->appends(request()->query());
+            return view('admin.projects.index', compact('projects'));
+        }
+
+
         $projects = Project::paginate(10);
 
         return view('admin.projects.index', compact('projects'));
